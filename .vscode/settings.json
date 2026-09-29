@@ -1,0 +1,1 @@
+{"python.defaultInterpreterPath": "/opt/anaconda3/bin/python3", "python.analysis.extraPaths": ["./backend", "/opt/anaconda3/lib/python3.12/site-packages"], "python.autoComplete.extraPaths": ["./backend", "/opt/anaconda3/lib/python3.12/site-packages"]}

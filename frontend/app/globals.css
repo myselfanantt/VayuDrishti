@@ -1,0 +1,278 @@
+﻿@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Inter:wght@400;500;600&family=Roboto+Mono:wght@400;500&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-base:        #F8F9FA;
+  --bg-surface:     #FFFFFF;
+  --bg-elevated:    #F1F3F4;
+  --text-primary:   #202124;
+  --text-secondary: #5F6368;
+  --text-muted:     #9AA0A6;
+  --accent-blue:    #1A73E8;
+  --accent-green:   #34A853;
+  --accent-yellow:  #FBBC04;
+  --accent-red:     #EA4335;
+  --accent-indigo:  #7C4DFF;
+  --accent-orange:  #FF6D00;
+  --border:         #DADCE0;
+  --border-focus:   #1A73E8;
+  --sidebar-width:  240px;
+  --topbar-height:  56px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  font-family: "DM Sans", "Inter", system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Typography ──────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.label-sm {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--text-muted);
+  text-transform: none;
+}
+
+.value-xl {
+  font-family: "Roboto Mono", monospace;
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.value-lg {
+  font-family: "Roboto Mono", monospace;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.mono {
+  font-family: "Roboto Mono", monospace;
+}
+
+/* ── Scrollbar ───────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-elevated); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+/* ── Cards ───────────────────────────────────── */
+.card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.card-elevated {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06), 0 2px 8px rgba(0,0,0,0.04);
+}
+
+/* ── Risk Badges ─────────────────────────────── */
+.risk-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px 3px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  border-left: 3px solid transparent;
+}
+
+.risk-critical {
+  background: #FEE8E7;
+  border-left-color: var(--accent-red);
+  color: #C5221F;
+}
+
+.risk-high {
+  background: #FEF0E0;
+  border-left-color: var(--accent-orange);
+  color: #B06000;
+}
+
+.risk-moderate {
+  background: #FEF9E7;
+  border-left-color: var(--accent-yellow);
+  color: #8A6914;
+}
+
+.risk-low {
+  background: #E8F5E9;
+  border-left-color: var(--accent-green);
+  color: #1E6C3B;
+}
+
+/* ── Synoptic Tags ───────────────────────────── */
+.synoptic-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  background: #F0F4FF;
+  border: 1px solid #C7D7F8;
+  border-radius: 4px;
+  color: #1A50B5;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* ── Live Alert Pulse (CSS only) ─────────────── */
+.live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-green);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(52,168,83,0.5); }
+  50% { opacity: 0.8; box-shadow: 0 0 0 6px rgba(52,168,83,0); }
+}
+
+.alert-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-red);
+  animation: pulse-dot-alert 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-dot-alert {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(234,67,53,0.5); }
+  50% { opacity: 0.7; box-shadow: 0 0 0 6px rgba(234,67,53,0); }
+}
+
+/* ── Buttons ─────────────────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: var(--accent-blue);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.btn-primary:hover { background: #1557B0; }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 15px;
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.btn-secondary:hover { background: var(--bg-elevated); }
+
+/* ── Input ───────────────────────────────────── */
+.input-base {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 13px;
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color 0.15s;
+}
+.input-base:focus { border-color: var(--border-focus); }
+
+/* ── Tooltip ─────────────────────────────────── */
+.tooltip {
+  position: absolute;
+  background: #202124;
+  color: #fff;
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 8px;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ── Skeleton loader ─────────────────────────── */
+.skeleton {
+  background: linear-gradient(90deg, var(--bg-elevated) 25%, var(--border) 50%, var(--bg-elevated) 75%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s infinite;
+  border-radius: 4px;
+}
+
+@keyframes skeleton-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ── Data table ──────────────────────────────── */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.data-table th {
+  text-align: left;
+  padding: 8px 12px;
+  border-bottom: 2px solid var(--border);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+.data-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--bg-elevated);
+  color: var(--text-primary);
+}
+.data-table tr:hover td { background: var(--bg-base); }
+
+/* ── Mapbox container ────────────────────────── */
+.mapbox-container {
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+}
+
+/* ── Chart legend text ───────────────────────── */
+.recharts-legend-item-text {
+  font-size: 12px !important;
+  color: var(--text-secondary) !important;
+}

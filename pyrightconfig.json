@@ -1,0 +1,1 @@
+{"executionEnvironments": [{"root": "backend", "extraPaths": ["app"]}], "extraPaths": ["./backend", "/opt/anaconda3/lib/python3.12/site-packages", "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/site-packages"]}
